@@ -11,21 +11,22 @@ namespace Lesson_02
         Deposit
     }
 
-    class AccountTask01
+    class AccountTask02
     {
-        // Создать класс счет в банке с закрытыми полями: номер счета, баланс, тип банковского счета (использовать перечислимый тип).
-        // Предусмотреть методы для доступа к данным – заполнения и чтения.
-        // Создать объект класса, заполнить его поля и вывести информацию об объекте класса на печать
+        // Изменить класс счет в банке из упражнения таким образом,
+        // чтобы номер счета генерировался сам и был уникальным.
+        // Для этого надо создать в классе статическую переменную и метод, который увеличивает значение этого переменной.
 
 
+        static UInt64 _totalAccounts;
         UInt64 _number;
         Decimal _balance;
         AccountType _type;
 
  
-        public UInt64 CreateAccount(UInt64 accNumber)
+        public UInt64 CreateAccount()
         {
-            _number = accNumber;
+            _number = ++_totalAccounts;
             return _number;
         }
 
