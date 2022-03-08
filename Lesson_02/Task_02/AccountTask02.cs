@@ -6,22 +6,22 @@ namespace Lesson_02
     public enum AccountType
     {
         Undefined,
-        Current,
-        Credit,
-        Deposit
+        Current,    // Текущий, расчетный
+        Credit,     // Кредитный
+        Deposit     // Депозит
     }
 
-    class AccountTask02
+    public class AccountTask02
     {
         // Изменить класс счет в банке из упражнения таким образом,
         // чтобы номер счета генерировался сам и был уникальным.
         // Для этого надо создать в классе статическую переменную и метод, который увеличивает значение этого переменной.
 
 
-        static UInt64 _totalAccounts;
-        UInt64 _number;
-        Decimal _balance;
-        AccountType _type;
+        static private UInt64 _totalAccounts;
+        private UInt64 _number;
+        private Decimal _balance;
+        private AccountType _type;
 
  
         public UInt64 CreateAccount()
@@ -30,40 +30,24 @@ namespace Lesson_02
             return _number;
         }
 
-
         public UInt64 GetAccountNumber()
         {
             return _number;
         }
 
-        public decimal PutTheMoney(decimal amount)
+        public void SetBalance(decimal amount)
         {
             if (_number != 0)
             {
-                _balance += amount;
-                return _balance;
+                _balance = amount;
             }
-
-            throw new Exception("Account doesn't exist");
-        }
-
-        public decimal WithdrawMoney(decimal amount)
-        {
-            if (_number != 0)
+            else
             {
-                if (amount > _balance)
-                {
-                    throw new Exception($"The withdraw amount is exceed the amount of you account. You total account amount is {_balance}.");
-                }
-                
-                _balance -= amount;
-                return _balance;
+                throw new Exception("Account doesn't exist");
             }
-
-            throw new Exception("Account doesn't exist");
         }
 
-        public decimal GetAccountAmount()
+        public decimal GetBalance()
         {
             if (_number != 0)
             {
@@ -96,7 +80,7 @@ namespace Lesson_02
             {
                 throw new Exception("Account doesn't exist");
             }
-            
+
         }
     }
 }
