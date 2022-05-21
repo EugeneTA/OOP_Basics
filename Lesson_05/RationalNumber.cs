@@ -73,19 +73,6 @@ namespace Lesson_05
             }
         }
 
-        //public static RationalNumber operator +(int operand1, RationalNumber operand2)
-        //{
-        //    if (operand1 != 0 && operand2 != null)
-        //    {
-
-        //        return new RationalNumber(
-        //            operand1 * operand2.Denominator + operand2.Numerator,
-        //            operand2.Denominator
-        //            );
-        //    }
-
-        //    return operand2;
-        //}
 
         public static RationalNumber operator -(RationalNumber operand1, RationalNumber operand2)
         {
@@ -117,32 +104,6 @@ namespace Lesson_05
                 }
             }
         }
-
-        //public static RationalNumber operator -(int operand1, RationalNumber operand2)
-        //{
-        //    if (operand2 != null)
-        //    {
-        //        return new RationalNumber(
-        //            (operand1 * operand2.Denominator) - operand2.Numerator,
-        //            operand2.Denominator
-        //            );
-        //    }
-
-        //    return operand2;
-        //}
-
-        //public static RationalNumber operator -(RationalNumber operand1, int operand2)
-        //{
-        //    if (operand1 != null)
-        //    {
-        //        return new RationalNumber(
-        //            operand1.Numerator - (operand2 * operand1.Denominator),
-        //            operand1.Denominator
-        //            );
-        //    }
-
-        //    return operand1;
-        //}
 
         public static RationalNumber operator ++(RationalNumber rationalNumber)
         {
@@ -177,15 +138,6 @@ namespace Lesson_05
             return new RationalNumber(operand1.Numerator*operand2.Numerator, operand1.Denominator*operand2.Denominator);
         }
 
-        //public static RationalNumber operator *(long operand1, RationalNumber operand2)
-        //{
-        //    return (RationalNumber)operand1 * operand2;
-        //}
-   
-        //public static RationalNumber operator *(RationalNumber operand1, long operand2)
-        //{
-        //    return operand1 * (RationalNumber)operand2;
-        //}
 
         public static RationalNumber operator /(RationalNumber operand1, RationalNumber operand2)
         {
@@ -204,15 +156,6 @@ namespace Lesson_05
 
         }
 
-        //public static RationalNumber operator /(long operand1, RationalNumber operand2)
-        //{
-        //    return (RationalNumber)operand1 / operand2;
-        //}
-        
-        //public static RationalNumber operator /(RationalNumber operand1, long operand2)
-        //{
-        //    return operand1 / (RationalNumber)operand2;
-        //}
         
         public static bool operator < (RationalNumber operand1, RationalNumber operand2)
         {
@@ -392,14 +335,17 @@ namespace Lesson_05
 
         public override bool Equals(object obj)
         {
-            if (obj != null && obj is RationalNumber && obj.GetHashCode() == this.GetHashCode())
+            if (obj != null && obj is RationalNumber number)
             {
-                return true;
+                if (_numerator == number._numerator && _denominator == number._denominator)
+                {
+                    return true;
+                } 
+
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
+
         }
 
         public override int GetHashCode()
